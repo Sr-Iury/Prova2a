@@ -33,7 +33,13 @@ public class Program {
                     f.salario = double.Parse(Console.ReadLine());
                     Console.WriteLine("Salário total = " + f.salario);
                     fun.Add(f);
-                    listGERAL.Add(f.salario);
+                    foreach(Funcionario func in fun)
+                        {
+                            if(func.salario > 2000.0)
+                            {
+                                Console.WriteLine("Os salários acima de 3000 são respectivamente " + func.nome + " possuindo " + func.salario);
+                            }
+                        }
                     break;
                 case 1:
                     Medico m = new Medico();
@@ -55,8 +61,14 @@ public class Program {
                     m.especialidade = Console.ReadLine();
                     Console.WriteLine("Salário do médico com o benefício = " + m.Beneficio(m.salario));
                     mec.Add(m);
-                    listGERAL.Add(m.Beneficio(m.salario));
-                    break;
+                        foreach (Medico medi in mec)
+                        {
+                            if (medi.Beneficio(m.salario) > 2000.0)
+                            {
+                                Console.WriteLine("Os salários acima de 3000 são respectivamente " + medi.nome + " possuindo " + medi.salario);
+                            }
+                        }
+                        break;
 
                 case 2:
                     Administrativo adm = new Administrativo();
@@ -73,21 +85,23 @@ public class Program {
                     Console.Write("Digite a função do Funcionário: ");
                     adm.funcao = Console.ReadLine();
                     Console.WriteLine("Salário total do ADMINISTRADOR = " + adm.total(adm.salario));
-                    listGERAL.Add(adm.total(adm.salario));
                     admin.Add(adm);
-                    break;
-                case 3:
-                    foreach (double lista in listGERAL)
-                    {
-                        if (lista > 2000.0)
+                        foreach (Administrativo a in admin)
                         {
-                            Console.WriteLine(lista);
+                            if (a.total(adm.salario) > 2000.0)
+                            {
+                                Console.WriteLine("Os salários acima de 3000 são respectivamente " + a.nome + " possuindo " + a.salario);
+                            }
                         }
-                    }
+                        break;
+            }
+            if(opcao == 4)
+            {
+                    Console.WriteLine("Obrigado por usar o meu programa");
                     break;
             }
-            
         }
+            
         }
         catch (Exception ex)
         {
